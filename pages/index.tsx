@@ -1,27 +1,97 @@
 import Head from 'next/head'
-import styled from '@emotion/styled'
 import styles from '@/styles/Home.module.css'
+import { getByYear } from '../utils/api'
 
-export default function Home() {
+export default function Home({
+  isHoliday,
+  holiday,
+  quote,
+}: {
+  isHoliday: boolean
+  holiday: any
+  quote: string | any
+}) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Libur Hari Ini</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Cek libur hari ini" />
+        <meta name="keywords" content="libur hari ini, hari libur, hari libur nasional" />
+        <meta name="author" content="Syofyan Zuhad" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="Libur Hari Ini" />
+        <meta property="og:description" content="Cek libur hari ini" />
+        <meta property="og:image" content="https://libur-hari-ini.vercel.app/og-image.png" />
+        <meta property="og:url" content="https://libur-hari-ini.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Libur Hari Ini" />
+        <meta property="og:locale" content="id_ID" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@syofyanzuhad" />
+        <meta name="twitter:creator" content="@syofyanzuhad" />
+        <meta name="twitter:title" content="Libur Hari Ini" />
+        <meta name="twitter:description" content="Cek libur hari ini" />
+        <meta name="twitter:image" content="https://libur-hari-ini.vercel.app/og-image.png" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
+          Hari ini
+          {/* check isHoliday */}
+          {isHoliday ? (
+            <span className="ml-3 text-red-500">libur</span>
+          ) : (
+            <span className="ml-3 text-blue-500">kerja</span>
+          )}
+          !
         </h1>
 
+        {isHoliday ? (
+          <img
+            src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/df94ec92098101.5e42c9d54c7a7.gif"
+            alt="holiday"
+            className="w-80 inline-block"
+          />
+        ) : (
+          <img
+            src="https://camo.githubusercontent.com/40dff491d4e8123af55298ef908faedb66c463e5/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f57556c706c634d704f43456d5447427442572f67697068792e676966"
+            alt="work"
+            className="w-38 inline-block"
+          />
+        )}
+
         <p className={styles.description}>
-          Get started by editing{` `}
-          <code className={styles.code}>pages/index.js</code>
+          {/* show date today with javascript behavior */}
+          <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
+            {holiday ? (<strong>Selamat {holiday.name} </strong>) : ''}
+            {holiday ? (<br />) : ''}
+
+            {new Date().toLocaleDateString('id-ID', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </span>
         </p>
 
-        <p className={styles.description}>This is not an official starter!</p>
-
+        {/* <p className={styles.description}>Punya rencana apa hari ini?</p> */}
+        {/* show quote with blockquote */}
+        <blockquote className="text-center">
+          <p className="text-2xl font-semibold">"{quote.q}"</p>
+        </blockquote>
+        {/* print html special character */}
+        <p className="text-center text-gray-500">{quote.a}</p>
+        {/*
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
@@ -45,7 +115,7 @@ export default function Home() {
             <h3>Deploy &rarr;</h3>
             <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
           </a>
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>
@@ -54,10 +124,92 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{` `}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          Powered by
+          <span className="ml-1 text-red-500">Liburhariini</span>
+          {/* <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} /> */}
+        </a>
+        <a
+          className="ml-1 flex items-center"
+          href="https://kemenkopmk.go.id/sites/default/files/pengumuman/2022-10/SKB%20LibNas%20dan%20CuBer%202023.pdf"
+        >
+          | sumber
+          <svg
+            className="ml-1 w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+            ></path>
+          </svg>
         </a>
       </footer>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const year = new Date().getFullYear()
+  const holidays = getByYear(year)
+
+  const isHoliday = holidays.some((holiday: { date: Date }) => {
+    const date = new Date(holiday.date)
+    // console.log(date)
+    const today = new Date()
+    // console.log(today.getDay(), today.getDate(), today.getMonth(), date.getDate(), date.getMonth())
+    // check if today is not monday and not saturday
+    return (
+      (date.getDate() === today.getDate() && date.getMonth() === today.getMonth()) ||
+      today.getDay() === 1 ||
+      today.getDay() === 6
+    )
+  })
+  // console.log(isHoliday)
+
+  // get data from holiday json
+  const data = holidays.map((holiday: { date: Date }) => {
+    const date = new Date(holiday.date)
+    const today = new Date()
+
+    // console.log(today)
+    // if today is weekend, make a new object where isHoliday is true
+    if (today.getDay() === 1 || today.getDay() === 6) {
+      const weekend = {
+        name: 'Libur Akhir Pekan',
+        isHoliday: true,
+      }
+
+      return weekend
+    }
+
+    // if today is holiday, return object where isHoliday is true
+    return (today.getDate() === date.getDate() && today.getMonth() === date.getMonth()) ||
+      today.getDay() === 1 ||
+      today.getDay() === 6
+      ? { ...holiday, isHoliday: true }
+      : { ...holiday, isHoliday: false }
+  })
+  // console.log(data)
+
+  // get object where isHoliday is true
+  const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
+
+  // fetch qoutes of the day
+  const res = await fetch('https://zenquotes.io/api/today').then((res) => res.json())
+  const quote = res[0]
+  // console.log(quote)
+
+  return {
+    props: {
+      isHoliday,
+      holiday,
+      quote,
+    },
+  }
 }

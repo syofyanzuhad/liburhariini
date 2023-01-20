@@ -1,0 +1,177 @@
+[
+    {
+        "id": 1,
+        "name": "Tahun Baru",
+        "type": "holiday",
+        "description": "Libur Tahun Baru",
+        "date": "2023-01-01"
+    },
+    {
+        "id": 2,
+        "name": "Tahun Baru Imlek",
+        "type": "holiday",
+        "description": "Libur Tahun Baru Imlek",
+        "date": "2023-01-22"
+    },
+    {
+        "id": 3,
+        "name": "Cuti Bersama Tahun Baru Imlek",
+        "type": "joint-holiday",
+        "description": "Libur Cuti Bersama Tahun Baru Imlek",
+        "date": "2023-01-23"
+    },
+    {
+        "id": 4,
+        "name": "Isra Mi'raj Nabi Muhammad SAW",
+        "type": "holiday",
+        "description": "Libur Isra Mi'raj Nabi Muhammad SAW",
+        "date": "2023-02-18"
+    },
+    {
+        "id": 5,
+        "name": "Hari Raya Nyepi",
+        "type": "holiday",
+        "description": "Libur Hari Raya Nyepi",
+        "date": "2023-03-22"
+    },
+    {
+        "id": 6,
+        "name": "Cuti Bersama Hari Raya Nyepi",
+        "type": "holiday",
+        "description": "Libur Cuti Bersama Hari Raya Nyepi",
+        "date": "2023-03-22"
+    },
+    {
+        "id": 7,
+        "name": "Wafat Isa Al-Masih",
+        "type": "holiday",
+        "description": "Libur Wafat Isa Al-Masih",
+        "date": "2023-04-07"
+    },
+    {
+        "id": 8,
+        "name": "Cuti Bersama Hari Raya Idul Fitri",
+        "type": "joint-holiday",
+        "description": "Libur Cuti Bersama Hari Raya Idul Fitri",
+        "date": "2023-04-21"
+    },
+    {
+        "id": 9,
+        "name": "Hari Raya Idul Fitri",
+        "type": "holiday",
+        "description": "Libur Hari Raya Idul Fitri",
+        "date": "2023-04-22"
+    },
+    {
+        "id": 10,
+        "name": "Hari Raya Idul Fitri",
+        "type": "holiday",
+        "description": "Libur Hari Raya Idul Fitri",
+        "date": "2023-04-23"
+    },
+    {
+        "id": 11,
+        "name": "Cuti Bersama Hari Raya Idul Fitri",
+        "type": "joint-holiday",
+        "description": "Cuti Bersama Libur Hari Raya Idul Fitri",
+        "date": "2023-04-23"
+    },
+    {
+        "id": 12,
+        "name": "Cuti Bersama Hari Raya Idul Fitri",
+        "type": "joint-holiday",
+        "description": "Cuti Bersama Libur Hari Raya Idul Fitri",
+        "date": "2023-04-24"
+    },
+    {
+        "id": 13,
+        "name": "Cuti Bersama Hari Raya Idul Fitri",
+        "type": "joint-holiday",
+        "description": "Cuti Bersama Libur Hari Raya Idul Fitri",
+        "date": "2023-04-25"
+    },
+    {
+        "id": 13,
+        "name": "Cuti Bersama Hari Raya Idul Fitri",
+        "type": "joint-holiday",
+        "description": "Cuti Bersama Libur Hari Raya Idul Fitri",
+        "date": "2023-04-26"
+    },
+    {
+        "id": 14,
+        "name": "Hari Buruh Nasional",
+        "type": "holiday",
+        "description": "Libur Hari Buruh Nasional",
+        "date": "2023-05-01"
+    },
+    {
+        "id": 15,
+        "name": "Kenaikan Isa Al-Masih",
+        "type": "holiday",
+        "description": "Libur Kenaikan Isa Al-Masih",
+        "date": "2023-05-18"
+    },
+    {
+        "id": 16,
+        "name": "Hari Lahir Pancasila",
+        "type": "holiday",
+        "description": "Libur Hari Lahir Pancasila",
+        "date": "2023-06-01"
+    },
+    {
+        "id": 17,
+        "name": "Cuti Bersama Hari Raya Waisak",
+        "type": "joint-holiday",
+        "description": "Cuti Bersama Libur Hari Raya Waisak",
+        "date": "2023-06-02"
+    },
+    {
+        "id": 18,
+        "name": "Hari Raya Waisak",
+        "type": "holiday",
+        "description": "Libur Hari Raya Waisak",
+        "date": "2023-06-04"
+    },
+    {
+        "id": 19,
+        "name": "Hari Raya Idul Adha",
+        "type": "holiday",
+        "description": "Libur Hari Raya Idul Adha",
+        "date": "2023-06-29"
+    },
+    {
+        "id": 20,
+        "name": "Tahun Baru Islam",
+        "type": "holiday",
+        "description": "Libur Tahun Baru Islam",
+        "date": "2023-07-19"
+    },
+    {
+        "id": 21,
+        "name": "Hari Kemerdekaan",
+        "type": "holiday",
+        "description": "Libur Hari Kemerdekaan",
+        "date": "2023-08-17"
+    },
+    {
+        "id": 22,
+        "name": "Maulid Nabi Muhammad SAW",
+        "type": "holiday",
+        "description": "Libur Maulid Nabi Muhammad SAW",
+        "date": "2023-09-10"
+    },
+    {
+        "id": 23,
+        "name": "Hari Natal",
+        "type": "holiday",
+        "description": "Libur Hari Natal",
+        "date": "2023-12-25"
+    },
+    {
+        "id": 24,
+        "name": "Cuti Bersama Hari Natal",
+        "type": "joint-holiday",
+        "description": "Cuti Bersama Libur Hari Natal",
+        "date": "2023-12-26"
+    }
+]
