@@ -124,11 +124,7 @@ export default function Home({
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="/" target="_blank" rel="noopener noreferrer">
           Powered by
           <span className="ml-1 text-red-500">Liburhariini</span>
           {/* <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} /> */}
@@ -142,14 +138,14 @@ export default function Home({
             className="ml-1 w-4 h-4"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
             />
           </svg>
@@ -171,8 +167,8 @@ export async function getStaticProps() {
     // check if today is not monday and not saturday
     return (
       (date.getDate() === today.getDate() && date.getMonth() === today.getMonth()) ||
-      (today.getDay() === 1 ||
-      today.getDay() === 6)
+      today.getDay() === 1 ||
+      today.getDay() === 6
     )
   })
   // console.log(isHoliday)
@@ -195,8 +191,8 @@ export async function getStaticProps() {
 
     // if today is holiday, return object where isHoliday is true
     return (today.getDate() === date.getDate() && today.getMonth() === date.getMonth()) ||
-      (today.getDay() === 1 ||
-      today.getDay() === 6)
+      today.getDay() === 1 ||
+      today.getDay() === 6
       ? { ...holiday, isHoliday: true }
       : { ...holiday, isHoliday: false }
   })
