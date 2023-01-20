@@ -125,7 +125,7 @@ export default function Home({
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=typescript-nextjs-starter"
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -171,8 +171,8 @@ export async function getStaticProps() {
     // check if today is not monday and not saturday
     return (
       (date.getDate() === today.getDate() && date.getMonth() === today.getMonth()) ||
-      today.getDay() === 1 ||
-      today.getDay() === 6
+      (today.getDay() === 1 ||
+      today.getDay() === 6)
     )
   })
   // console.log(isHoliday)
@@ -195,8 +195,8 @@ export async function getStaticProps() {
 
     // if today is holiday, return object where isHoliday is true
     return (today.getDate() === date.getDate() && today.getMonth() === date.getMonth()) ||
-      today.getDay() === 1 ||
-      today.getDay() === 6
+      (today.getDay() === 1 ||
+      today.getDay() === 6)
       ? { ...holiday, isHoliday: true }
       : { ...holiday, isHoliday: false }
   })
