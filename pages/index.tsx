@@ -80,11 +80,13 @@ export default function Home({
             {holiday ? <strong>Selamat {holiday.name} </strong> : ''}
             {holiday ? <br /> : ''}
 
+            {/* get date locale indonesia */}
             {new Date().toLocaleDateString('id-ID', {
               weekday: 'long',
               year: 'numeric',
               month: 'long',
               day: 'numeric',
+              timeZone: 'Asia/Jakarta',
             })}
           </span>
         </p>
@@ -159,7 +161,9 @@ export async function getStaticProps() {
   const year = new Date().getFullYear()
   const holidays = getByYear(year)
 
+  // get time today in indonesia
   const today = new Date()
+  today.setHours(today.getHours() + 7)
 
   const isHoliday = holidays.some((holiday: { date: Date }) => {
     const date = new Date(holiday.date)
@@ -197,7 +201,7 @@ export async function getStaticProps() {
       ? { ...holiday, isHoliday: true }
       : { ...holiday, isHoliday: false }
   })
-  console.log(data)
+  // console.log(data)
 
   // get object where isHoliday is true
   const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
