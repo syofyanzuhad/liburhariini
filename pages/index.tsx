@@ -159,24 +159,25 @@ export async function getStaticProps() {
   const year = new Date().getFullYear()
   const holidays = getByYear(year)
 
+  const today = new Date()
+
   const isHoliday = holidays.some((holiday: { date: Date }) => {
     const date = new Date(holiday.date)
     // console.log(date)
-    const today = new Date()
     // console.log(today.getDay(), today.getDate(), today.getMonth(), date.getDate(), date.getMonth())
     // check if today is not monday and not saturday
     return (
       (date.getDate() === today.getDate() && date.getMonth() === today.getMonth()) ||
       today.getDay() === 1 ||
       today.getDay() === 6
-    ) ? false : true
+    )
   })
   // console.log(isHoliday)
 
   // get data from holiday json
   const data = holidays.map((holiday: { date: Date }) => {
     const date = new Date(holiday.date)
-    const today = new Date()
+    // const today = new Date()
 
     // console.log(today)
     // if today is weekend, make a new object where isHoliday is true
@@ -196,7 +197,7 @@ export async function getStaticProps() {
       ? { ...holiday, isHoliday: true }
       : { ...holiday, isHoliday: false }
   })
-  // console.log(data)
+  console.log(data)
 
   // get object where isHoliday is true
   const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
