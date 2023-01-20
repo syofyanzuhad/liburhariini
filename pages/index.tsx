@@ -169,7 +169,7 @@ export async function getStaticProps() {
       (date.getDate() === today.getDate() && date.getMonth() === today.getMonth()) ||
       today.getDay() === 1 ||
       today.getDay() === 6
-    )
+    ) ? true : false
   })
   // console.log(isHoliday)
 
