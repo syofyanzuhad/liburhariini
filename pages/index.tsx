@@ -184,8 +184,35 @@ export async function getStaticProps() {
     // const today = new Date()
 
     // console.log(today)
+
+    if (
+      (today.getDate() === date.getDate() &&
+        today.getMonth() === date.getMonth() &&
+        today.getDay() === 1) ||
+      today.getDay() === 6
+    ) {
+      // find holiday name where today is holiday
+      const todayHoliday = holidays.find((holiday: { date: Date }) => {
+        const date = new Date(holiday.date)
+        return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
+      })
+
+      // const todayHoliday = {
+      const weekend = {
+        name: 'Libur Akhir Pekan dan ' + todayHoliday?.name,
+        isHoliday: true,
+      }
+
+      return weekend
+    }
+
     // if today is weekend, make a new object where isHoliday is true
-    if (today.getDay() === 1 || today.getDay() === 6) {
+    if (
+      (today.getDate() !== date.getDate() &&
+        today.getMonth() !== date.getMonth() &&
+        today.getDay() === 1) ||
+      today.getDay() === 6
+    ) {
       const weekend = {
         name: 'Libur Akhir Pekan',
         isHoliday: true,
