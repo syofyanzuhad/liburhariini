@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { getByYear } from '../utils/api'
+import Image from 'next/image'
 
 export default function Home({
   isHoliday,
@@ -56,24 +57,28 @@ export default function Home({
         </h1>
 
         {isHoliday ? (
-          <img
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/df94ec92098101.5e42c9d54c7a7.gif"
+          <Image
+            src="/cat-sleep.gif"
             alt="holiday"
             className="w-80 inline-block"
+            width={500}
+            height={500}
           />
         ) : (
-          <img
-            src="https://camo.githubusercontent.com/40dff491d4e8123af55298ef908faedb66c463e5/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f57556c706c634d704f43456d5447427442572f67697068792e676966"
+          <Image
+            src="/cat-work.gif"
             alt="work"
             className="w-38 inline-block"
+            width={500}
+            height={500}
           />
         )}
 
         <p className={styles.description}>
           {/* show date today with javascript behavior */}
           <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
-            {holiday ? (<strong>Selamat {holiday.name} </strong>) : ''}
-            {holiday ? (<br />) : ''}
+            {holiday ? <strong>Selamat {holiday.name} </strong> : ''}
+            {holiday ? <br /> : ''}
 
             {new Date().toLocaleDateString('id-ID', {
               weekday: 'long',
@@ -87,7 +92,7 @@ export default function Home({
         {/* <p className={styles.description}>Punya rencana apa hari ini?</p> */}
         {/* show quote with blockquote */}
         <blockquote className="text-center">
-          <p className="text-2xl font-semibold">"{quote.q}"</p>
+          <p className="text-2xl font-semibold">&quot;{quote.q}&quot;</p>
         </blockquote>
         {/* print html special character */}
         <p className="text-center text-gray-500">{quote.a}</p>
