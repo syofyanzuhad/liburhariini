@@ -220,13 +220,13 @@ export async function getStaticProps() {
     }
 
     // if today is holiday, return object where isHoliday is true
-    return (today.getDate() === date.getDate() && today.getMonth() === date.getMonth()) ||
-      today.getDay() === 1 ||
-      today.getDay() === 6
+    return today.getDate() === date.getDate() &&
+      today.getMonth() === date.getMonth() &&
+      (today.getDay() !== 1 || today.getDay() !== 6)
       ? { ...holiday, isHoliday: true }
       : { ...holiday, isHoliday: false }
   })
-  // console.log(data)
+  console.log(data)
 
   // get object where isHoliday is true
   const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
