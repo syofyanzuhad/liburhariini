@@ -5,14 +5,17 @@ import Image from 'next/image'
 import Script from 'next/script'
 
 export default function Home({
+  today,
   isHoliday,
   holiday,
   quote,
 }: {
+  today: string
   isHoliday: boolean
   holiday: any
   quote: string | any
-}) {
+  }) {
+  const dateToday = new Date(today)
   return (
     <div className={styles.container}>
       <Head>
@@ -87,12 +90,11 @@ export default function Home({
             {holiday ? <br /> : ''}
 
             {/* get date locale indonesia */}
-            {new Date().toLocaleDateString('id-ID', {
+            {dateToday.toLocaleDateString('id-ID', {
               weekday: 'long',
               year: 'numeric',
               month: 'long',
               day: 'numeric',
-              timeZone: 'Asia/Jakarta',
             })}
           </span>
         </p>
@@ -182,7 +184,7 @@ export async function getStaticProps() {
       today.getDay() === 6
     )
   })
-  // console.log(isHoliday)
+  console.log(today)
 
   // get data from holiday json
   const data = holidays.map((holiday: { date: Date }) => {
@@ -211,7 +213,7 @@ export async function getStaticProps() {
         : { ...holiday, isHoliday: false }
     }
   })
-  // console.log(data)
+  console.log(data)
 
   // get object where isHoliday is true
   const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
@@ -223,6 +225,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      today: today.toDateString(),
       isHoliday,
       holiday,
       quote,
