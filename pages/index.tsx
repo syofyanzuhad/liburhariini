@@ -185,11 +185,9 @@ export async function getStaticProps() {
 
     // console.log(today)
 
-    if (
-      today.getDate() === date.getDate() &&
-      today.getMonth() === date.getMonth() &&
-      (today.getDay() === 1 || today.getDay() === 6)
-    ) {
+    if (today.getDay() === 1 || today.getDay() === 6) {
+    }
+    if (today.getDate() === date.getDate() && today.getMonth() === date.getMonth()) {
       // find holiday name where today is holiday
       const todayHoliday = holidays.find((holiday: { date: Date }) => {
         const date = new Date(holiday.date)
@@ -217,14 +215,12 @@ export async function getStaticProps() {
       }
 
       return weekend
+    } else {
+      // if today is holiday, return object where isHoliday is true
+      return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
+        ? { ...holiday, isHoliday: true }
+        : { ...holiday, isHoliday: false }
     }
-
-    // if today is holiday, return object where isHoliday is true
-    return today.getDate() === date.getDate() &&
-      today.getMonth() === date.getMonth() &&
-      (today.getDay() !== 1 || today.getDay() !== 6)
-      ? { ...holiday, isHoliday: true }
-      : { ...holiday, isHoliday: false }
   })
   console.log(data)
 
