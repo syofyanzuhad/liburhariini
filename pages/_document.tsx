@@ -1,12 +1,12 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
+  public static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
     return { ...initialProps }
   }
 
-  render() {
+  public render() {
     const GA_MEASUREMENT_ID = 'G-4G13YFK4NM' // Paste your GTAG here
     return (
       <Html lang="en">
