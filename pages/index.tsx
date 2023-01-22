@@ -48,17 +48,6 @@ export default function Home({
           name="google-site-verification"
           content="xg1uxwtnbHvgBgKii1fSpIdpXVxfivsvXdjfwf7bnII"
         />
-        {/* <!-- Google tag (gtag.js) --> */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-4G13YFK4NM"></Script>
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-4G13YFK4NM');
-          `}
-        </Script>
       </Head>
 
       <main className={styles.main}>
