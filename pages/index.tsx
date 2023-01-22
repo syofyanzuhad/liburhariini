@@ -134,7 +134,7 @@ export default function Home({
       <footer className={styles.footer}>
         <a href="https://freebio.dev/syofyanzuhad" target="_blank" rel="noopener noreferrer">
           Powered by
-          <span className="ml-1 text-red-500">Liburhariini</span>
+          <strong className="ml-1 text-red-500">Liburhariini</strong>
           {/* <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} /> */}
         </a>
         <a
