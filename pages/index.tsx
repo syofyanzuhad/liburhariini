@@ -14,7 +14,7 @@ export default function Home({
   isHoliday: boolean
   holiday: any
   quote: string | any
-  }) {
+}) {
   const dateToday = new Date(today)
   return (
     <div className={styles.container}>
@@ -169,9 +169,17 @@ export async function getStaticProps() {
   const year = new Date().getFullYear()
   const holidays = getByYear(year)
 
-  // get time today in indonesia
-  const today = new Date()
-  today.setHours(today.getHours() + 7)
+  // get time utc
+
+  // const today = new Date()
+  // console.log(today)
+  // today.setHours(today.getHours() + 7)
+  var now = new Date()
+  const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
+  // get date todayUtc on indonesia
+  console.log(todayUtc)
+  const today = new Date(todayUtc.getTime() + 7 * 3600 * 1000)
+  console.log(today)
 
   const isHoliday = holidays.some((holiday: { date: Date }) => {
     const date = new Date(holiday.date)
@@ -184,7 +192,6 @@ export async function getStaticProps() {
       today.getDay() === 6
     )
   })
-  console.log(today)
 
   // get data from holiday json
   const data = holidays.map((holiday: { date: Date }) => {
@@ -213,7 +220,7 @@ export async function getStaticProps() {
         : { ...holiday, isHoliday: false }
     }
   })
-  console.log(data)
+  // console.log(data)
 
   // get object where isHoliday is true
   const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
