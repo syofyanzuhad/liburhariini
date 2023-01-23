@@ -174,7 +174,7 @@ export async function getStaticProps() {
   // const today = new Date()
   // console.log(today)
   // today.setHours(today.getHours() + 7)
-  var now = new Date()
+  let now = new Date()
   const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
   // get date todayUtc on indonesia
   console.log(todayUtc)
