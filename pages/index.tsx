@@ -47,6 +47,8 @@ export default function Home({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
 
+        <script async src="https://cdn.splitbee.io/sb.js" />
+
         <meta
           name="google-site-verification"
           content="xg1uxwtnbHvgBgKii1fSpIdpXVxfivsvXdjfwf7bnII"
@@ -179,7 +181,9 @@ export async function getStaticProps() {
   // // get date todayUtc on indonesia
   // console.log(todayUtc)
   // fetch time from api https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta
-  const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then((res) => res.json())
+  const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then(
+    (res) => res.json()
+  )
   console.log(time)
   const today = new Date(time.currentLocalTime)
   console.log(today)

@@ -11,7 +11,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script async src="https://cdn.splitbee.io/sb.js" />
+          {/* <script async src="https://cdn.splitbee.io/sb.js" /> */}
 
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
           <script
