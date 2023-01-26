@@ -2,7 +2,6 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { getByYear } from '../utils/api'
 import Image from 'next/image'
-import Script from 'next/script'
 
 export default function Home({
   today,
@@ -167,7 +166,7 @@ export default function Home({
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const year = new Date().getFullYear()
   const holidays = getByYear(year)
 
@@ -246,5 +245,9 @@ export async function getServerSideProps() {
       holiday,
       quote,
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10, // In seconds
   }
 }
