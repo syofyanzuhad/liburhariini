@@ -14,6 +14,34 @@
 
 <br>
 
+<p align='center'>
+    <img src="https://img.shields.io/badge/hacktoberfest-2023-blueviolet" alt="Hacktober Badge"/>
+    <img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99" alt="Star Badge"/>
+ 	<a href="https://github.com/syofyanzuhad/liburhariini" >
+		<img src="https://img.shields.io/badge/Contributions-welcome-violet.svg?style=flat&logo=git" alt="Contributions" />
+	</a>
+</p>
+
+<p align='center'>
+  <a href='https://github.com/syofyanzuhad/liburhariini'>
+	  <img src='https://visitor-badge.glitch.me/badge?page_id=syofyanzuhad.liburhariini'>
+	</a>
+	<a href="https://github.com/syofyanzuhad/liburhariini/pulls">
+		<img src="https://img.shields.io/github/issues-pr/syofyanzuhad/liburhariini" alt="Pull Requests Badge"/>
+	</a>
+  <a href="https://github.com/syofyanzuhad/liburhariini/graphs/contributors">
+		<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/syofyanzuhad/liburhariini?color=2b9348">
+	</a>
+  <a href='https://github.com/syofyanzuhad/liburhariini'>
+		<img src='https://img.shields.io/github/forks/syofyanzuhad/liburhariini'>
+	</a>
+  <a href='https://github.com/syofyanzuhad/liburhariini'>
+		<img src='https://img.shields.io/github/stars/syofyanzuhad/liburhariini'>
+	</a>
+</p>
+
+<br>
+
 A Next.js starter that includes all you need to build amazing projects 🔥. Fork and customize from [jpedroschmitz](https://github.com/jpedroschmitz/typescript-nextjs-starter)
 
 - 🚀 **Next.js 12**
