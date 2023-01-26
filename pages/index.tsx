@@ -47,7 +47,7 @@ export default function Home({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
 
-        <Script async src="https://cdn.splitbee.io/sb.js" />
+        <script async src="https://cdn.splitbee.io/sb.js" />
 
         <meta
           name="google-site-verification"
