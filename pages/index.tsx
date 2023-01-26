@@ -47,7 +47,7 @@ export default function Home({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
 
-        <script async src="https://cdn.splitbee.io/sb.js" />
+        <Script async src="https://cdn.splitbee.io/sb.js" />
 
         <meta
           name="google-site-verification"
@@ -167,26 +167,27 @@ export default function Home({
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const year = new Date().getFullYear()
   const holidays = getByYear(year)
 
   // get time utc
-
   // const today = new Date()
   // console.log(today)
   // today.setHours(today.getHours() + 7)
-  // let now = new Date()
-  // const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
-  // // get date todayUtc on indonesia
+  let now = new Date()
+  const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
+  // get date todayUtc on indonesia
+  todayUtc.setHours(todayUtc.getHours() + 7)
+  const today = new Date(todayUtc)
   // console.log(todayUtc)
   // fetch time from api https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta
-  const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then(
-    (res) => res.json()
-  )
-  console.log(time)
-  const today = new Date(time.currentLocalTime)
-  console.log(today)
+  // const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then(
+  //   (res) => res.json()
+  // )
+  // console.log(time)
+  // const today = new Date(time.currentLocalTime)
+  // console.log(today)
   // const today = new Date(todayUtc.getTime() + 7 * 3600 * 1000)
 
   const isHoliday = holidays.some((holiday: { date: Date }) => {
