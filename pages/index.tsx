@@ -174,18 +174,18 @@ export async function getStaticProps() {
   // const today = new Date()
   // console.log(today)
   // today.setHours(today.getHours() + 7)
-  let now = new Date()
-  const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
+  // let now = new Date()
+  // const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
   // get date todayUtc on indonesia
-  todayUtc.setHours(todayUtc.getHours() + 7)
-  const today = new Date(todayUtc)
+  // todayUtc.setHours(todayUtc.getHours() + 7)
+  // const today = new Date(todayUtc)
   // console.log(todayUtc)
   // fetch time from api https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta
-  // const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then(
-  //   (res) => res.json()
-  // )
+  const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then(
+    (res) => res.json()
+  )
   // console.log(time)
-  // const today = new Date(time.currentLocalTime)
+  const today = new Date(time.currentLocalTime)
   // console.log(today)
   // const today = new Date(todayUtc.getTime() + 7 * 3600 * 1000)
 
