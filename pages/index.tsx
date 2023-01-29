@@ -288,7 +288,7 @@ export async function getStaticProps() {
   //   // fetch qoutes of the day
   const res = await fetch('https://zenquotes.io/api/today').then((res) => res.json())
   const quote = res[0]
-  console.log(quote)
+  // console.log(quote)
 
   return {
     props: {

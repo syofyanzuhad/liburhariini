@@ -14,7 +14,7 @@ export default function Greet() {
 
   async function getDateToday() {
     const today = new Date()
-    today.setUTCHours(today.getUTCHours() + 7)
+    // today.setUTCHours(today.getUTCHours() + 7)
     const holidays = dataHolidays
 
     const isHoliday = holidays.some((holiday) => {

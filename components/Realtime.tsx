@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 
 export default function RealTime() {
   let date = new Date()
-  date.setUTCHours(date.getUTCHours() + 7)
   const [time, setTime] = useState(
     date.toLocaleString('id-ID', {
       hour: 'numeric',
@@ -19,7 +18,6 @@ export default function RealTime() {
   useEffect(() => {
     const updateTime = () => {
       let date = new Date()
-      date.setUTCHours(date.getUTCHours() + 7)
       setTime(
         date.toLocaleString('id-ID', {
           hour: 'numeric',
