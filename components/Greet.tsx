@@ -92,7 +92,7 @@ export default function Greet() {
         </div>
       ) : (
           <div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
+            <h1 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
               Hari ini
               {/* check isHoliday */}
               {isHoliday ? (
