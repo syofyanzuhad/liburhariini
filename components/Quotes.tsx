@@ -4,7 +4,9 @@ export default function Quote() {
   const [quote, setQuote] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => void fetchData(), [])
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   async function fetchData() {
     // try {
@@ -17,7 +19,7 @@ export default function Quote() {
         setLoading(false)
       })
       .catch((error) => {
-        console.error(error, 'error')
+        // console.error(error, 'error')
         setLoading(false)
       })
     // const data = await res.json()
@@ -26,10 +28,10 @@ export default function Quote() {
     //   setLoading(false)
     // }
   }
-  console.log(quote, 'quote')
+  // console.log(quote, 'quote')
 
   return (
-    <>
+    <div>
       {loading ? (
         <span>Loading...</span>
       ) : (
@@ -44,6 +46,6 @@ export default function Quote() {
           </div>
         )
       )}
-    </>
+    </div>
   )
 }

@@ -8,16 +8,7 @@ import Greet from '@/components/Greet'
 
 // const holidays = dataHolidays
 
-export default function Home({}: // today,
-// isHoliday,
-// holidays,
-// quote,
-{
-  // today: string
-  // isHoliday: boolean
-  // holiday: any
-  // quote: string | any
-}) {
+export default function Home() {
   // const [today, setToday] = useState(new Date())
   // const [isHoliday, setIsHoliday] = useState(false)
   // const [holiday, setHoliday] = useState(true)

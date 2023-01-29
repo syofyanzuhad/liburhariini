@@ -8,7 +8,9 @@ export default function Greet() {
   const [holiday, setHoliday] = useState<any[]>([])
   const [isHoliday, setIsHoliday] = useState(false)
 
-  useEffect(() => void getDateToday(), [])
+  useEffect(() => {
+    getDateToday()
+  }, [])
 
   async function getDateToday() {
     const today = new Date()
@@ -113,7 +115,7 @@ export default function Greet() {
         {/* show date today with javascript behavior */}
         <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
           <strong>Selamat {holiday.length > 0 && holiday[0].name}</strong>
-          {holiday[0].date ?? <br />}
+          <br />
 
           {/* get date locale indonesia */}
           <RealTime />
