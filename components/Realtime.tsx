@@ -37,5 +37,5 @@ export default function RealTime() {
     updateTime()
   }, [])
 
-  return <p>{time}</p>
+  return <span>{time}</span>
 }

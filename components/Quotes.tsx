@@ -37,10 +37,10 @@ export default function Quote() {
           <div>
             {/* show quote with blockquote */}
             <blockquote className="text-center">
-              <p className="text-2xl font-semibold">&quot;{quote[0].q}&quot;</p>
+              <p className="text-2xl font-semibold">&quot;{quote.length > 0 && quote[0].q}&quot;</p>
             </blockquote>
             {/* print html special character */}
-            <p className="text-center text-gray-500">{quote[0].a}</p>
+            <p className="text-center text-gray-500">{quote.length > 0 && quote[0].a}</p>
           </div>
         )
       )}

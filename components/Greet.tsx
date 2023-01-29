@@ -112,7 +112,8 @@ export default function Greet() {
       <div className={styles.description}>
         {/* show date today with javascript behavior */}
         <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
-          <strong>Selamat {holiday ? holiday[0].name : 'Bekerja'}!</strong>
+          <strong>Selamat {holiday.length > 0 && holiday[0].name}</strong>
+          {holiday[0].date ?? <br />}
 
           {/* get date locale indonesia */}
           <RealTime />
