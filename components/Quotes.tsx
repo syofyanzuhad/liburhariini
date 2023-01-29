@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react'
 
 export default function Quote() {
-  const [quote, setQuote] = useState({})
+  const [quote, setQuote] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => fetchData(), [])
+  useEffect(() => void fetchData(), [])
 
   async function fetchData() {
     // try {
-      setLoading(true)
-      const res = await fetch('https://zenquotes.io/api/today').then((res) => {
+    setLoading(true)
+    const res = await fetch('https://zenquotes.io/api/today')
+      .then((res: any) => {
         res.json()
         console.log(res, 'res')
         setQuote(res)
         setLoading(false)
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.error(error, 'error')
         setLoading(false)
       })
-      // const data = await res.json()
+    // const data = await res.json()
     // } catch (error) {
     //   console.error(error, 'error')
     //   setLoading(false)
@@ -35,10 +37,10 @@ export default function Quote() {
           <div>
             {/* show quote with blockquote */}
             <blockquote className="text-center">
-              <p className="text-2xl font-semibold">&quot;{quote.q}&quot;</p>
+              <p className="text-2xl font-semibold">&quot;{quote[0].q}&quot;</p>
             </blockquote>
             {/* print html special character */}
-            <p className="text-center text-gray-500">{quote.a}</p>
+            <p className="text-center text-gray-500">{quote[0].a}</p>
           </div>
         )
       )}

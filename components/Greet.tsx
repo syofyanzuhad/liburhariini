@@ -5,7 +5,7 @@ import Image from 'next/image'
 import RealTime from '@/components/Realtime'
 
 export default function Greet() {
-  const [holiday, setHoliday] = useState(null)
+  const [holiday, setHoliday] = useState<any[]>([])
   const [isHoliday, setIsHoliday] = useState(false)
 
   useEffect(() => void getDateToday(), [])
@@ -15,7 +15,7 @@ export default function Greet() {
     today.setUTCHours(today.getUTCHours() + 7)
     const holidays = dataHolidays
 
-    const isHoliday = holidays.some((holiday: { date: Date }) => {
+    const isHoliday = holidays.some((holiday) => {
       const date = new Date(holiday.date)
       // console.log(date.getDate() === today.getDate() && date.getMonth() === today.getMonth())
       // console.log(today.getDay(), today.getDate(), today.getMonth(), date.getDate(), date.getMonth())
@@ -29,12 +29,12 @@ export default function Greet() {
     setIsHoliday(isHoliday)
     // console.log(isHoliday, 'isHoliday')
 
-    const todayHoliday = holidays.find((holiday: { date: Date }) => {
+    const todayHoliday = holidays.find((holiday) => {
       const date = new Date(holiday.date)
       return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
     })
     // get data from holiday json
-    const holiday = holidays.map((holiday: { date: Date }) => {
+    const holiday = holidays.map((holiday) => {
       const date = new Date(holiday.date)
       // console.log(today.getDay())
 
