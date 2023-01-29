@@ -91,7 +91,7 @@ export default function Greet() {
           <span>Loading...</span>
         </div>
       ) : (
-          <div>
+          <div className='flex flex-col justify-center items-center'>
             <h1 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
               Hari ini
               {/* check isHoliday */}
