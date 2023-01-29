@@ -5,6 +5,7 @@ import Image from 'next/image'
 import RealTime from '@/components/Realtime'
 
 export default function Greet() {
+  const [loading, setLoading] = useState(true)
   const [holiday, setHoliday] = useState<any[]>([])
   const [isHoliday, setIsHoliday] = useState(false)
 
@@ -13,6 +14,7 @@ export default function Greet() {
   }, [])
 
   async function getDateToday() {
+    setLoading(true)
     const today = new Date()
     // today.setUTCHours(today.getUTCHours() + 7)
     const holidays = dataHolidays
@@ -69,6 +71,7 @@ export default function Greet() {
     //   date: today,
     // }
 
+    setLoading(false)
     return {
       props: {
         today,
@@ -82,45 +85,54 @@ export default function Greet() {
 
   return (
     <>
-      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
-        Hari ini
-        {/* check isHoliday */}
-        {isHoliday ? (
-          <span className="ml-3 text-red-500">libur</span>
-        ) : (
-          <span className="ml-3 text-blue-500">kerja</span>
-        )}
-        !
-      </h1>
-
-      {isHoliday ? (
-        <Image
-          src="/cat-sleep.gif"
-          alt="holiday"
-          className="w-80 inline-block"
-          width={500}
-          height={500}
-        />
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-12 w-12 mb-4"></div>
+          <span>Loading...</span>
+        </div>
       ) : (
-        <Image
-          src="/cat-work.gif"
-          alt="work"
-          className="w-38 inline-block"
-          width={500}
-          height={500}
-        />
+          <div>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
+              Hari ini
+              {/* check isHoliday */}
+              {isHoliday ? (
+                <span className="ml-3 text-red-500">libur</span>
+              ) : (
+                <span className="ml-3 text-blue-500">kerja</span>
+              )}
+              !
+            </h1>
+
+            {isHoliday ? (
+            <Image
+              src="/cat-sleep.gif"
+                alt="holiday"
+                className="w-80 inline-block"
+                width={500}
+                height={500}
+              />
+            ) : (
+              <Image
+                src="/cat-work.gif"
+                alt="work"
+                className="w-38 inline-block"
+                width={500}
+                height={500}
+              />
+            )}
+
+            <div className={styles.description}>
+              {/* show date today with javascript behavior */}
+              <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
+                <strong>Selamat {holiday.length > 0 && holiday[0].name}</strong>
+                <br />
+
+                {/* get date locale indonesia */}
+                <RealTime />
+              </span>
+            </div>
+          </div>
       )}
-
-      <div className={styles.description}>
-        {/* show date today with javascript behavior */}
-        <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
-          <strong>Selamat {holiday.length > 0 && holiday[0].name}</strong>
-          <br />
-
-          {/* get date locale indonesia */}
-          <RealTime />
-        </span>
-      </div>
     </>
   )
 }
