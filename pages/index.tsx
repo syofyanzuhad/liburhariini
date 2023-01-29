@@ -1,20 +1,128 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { getByYear } from '../utils/api'
-import Image from 'next/image'
+import dataHolidays from '../data/2023.json'
+import { useEffect, useState } from 'react'
+import Quote from '@/components/Quotes'
+import Greet from '@/components/Greet'
 
-export default function Home({
-  today,
-  isHoliday,
-  holiday,
-  quote,
-}: {
-  today: string
-  isHoliday: boolean
-  holiday: any
-  quote: string | any
+// const holidays = dataHolidays
+
+export default function Home({}: // today,
+// isHoliday,
+// holidays,
+// quote,
+{
+  // today: string
+  // isHoliday: boolean
+  // holiday: any
+  // quote: string | any
 }) {
-  const dateToday = new Date(today)
+  // const [today, setToday] = useState(new Date())
+  // const [isHoliday, setIsHoliday] = useState(false)
+  // const [holiday, setHoliday] = useState(true)
+  // const [quote, setQuote] = useState(true)
+  // console.log(quote)
+
+  // useEffect(() => {
+  //   void getDateToday().then((res) => {
+  //     setToday(res.props.today)
+  //     setIsHoliday(res.props.isHoliday)
+  //     setHoliday(res.props.holiday)
+  //     // setQuote(res.props.quote)
+  //   })
+  // }, [])
+  //   const date = new Date()
+  //   const [day, month, year] = date.toLocaleDateString('id-ID', {
+  //     year: 'numeric',
+  //     month: 'numeric',
+  //     day: 'numeric',
+  //   }).split('/')
+  //   const dateToday = new Date(`${year}-${month}-${day}`)
+  //   const isHoliday = dateToday.getDay() === 0 || dateToday.getDay() === 6
+  //   // const holiday = getByYear(year).find((item: any) => item.date === `${year}-${month}-${day}`)
+  //   // const quote = quotes[Math.floor(Math.random() * quotes.length)]
+
+  //   return {
+  //     props: {
+  //       today: dateToday,
+  //       isHoliday,
+  //       holiday,
+  //       // quote,
+  //     },
+  //   }
+  // }, [])
+
+  // async function getDateToday() {
+  //   const today = new Date()
+  //   const holidays = dataHolidays
+
+  //   // console.log(today)
+  //   // const dateToday = new Date(`${year}-${month}-${day}`)
+  //   // const isHoliday = dateToday.getDay() === 0 || dateToday.getDay() === 6
+  //   // const holiday = getByYear(year).find((item: any) => item.date === `${year}-${month}-${day}`)
+  //   // const quote = quotes[Math.floor(Math.random() * quotes.length)]
+
+  //   const isHoliday = holidays.some((holiday: { date: Date }) => {
+  //     const date = new Date(holiday.date)
+  //     // console.log(date.getDate() === today.getDate() && date.getMonth() === today.getMonth())
+  //     // console.log(today.getDay(), today.getDate(), today.getMonth(), date.getDate(), date.getMonth())
+  //     // check if today is not monday and not saturday
+  //     return date.getDate() === today.getDate() && date.getMonth() === today.getMonth()
+  //   })
+  //   // console.log(isHoliday)
+
+  //   // get data from holiday json
+  //   const data = holidays.map((holiday: { date: Date }) => {
+  //     const date = new Date(holiday.date)
+  //     // console.log(today.getDay())
+
+  //     if (today.getDay() === 0 || (today.getDay() === 6 && isHoliday)) {
+  //       // find holiday name where today is holiday
+  //       const todayHoliday = holidays.find((holiday: { date: Date }) => {
+  //         const date = new Date(holiday.date)
+  //         return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
+  //       })
+  //       return {
+  //         name: 'Libur Akhir Pekan dan ' + todayHoliday?.name,
+  //         isHoliday: true,
+  //       }
+  //     } else if (today.getDay() === 0 || (today.getDay() === 6 && !isHoliday)) {
+  //       return {
+  //         name: 'Libur Akhir Pekan',
+  //         isHoliday: true,
+  //       }
+  //     } else {
+  //       // if today is holiday, return object where isHoliday is true
+  //       return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
+  //         ? { ...holiday, isHoliday: true }
+  //         : { ...holiday, isHoliday: false }
+  //     }
+  //   })
+  //   // console.log(data)
+
+  //   // get object where isHoliday is true
+  //   const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? {
+  //     name: 'Hari Biasa',
+  //     isHoliday: false,
+  //     date: today,
+  //   }
+
+  //   // fetch qoutes of the day
+  //   // const res = await fetch('https://zenquotes.io/api/today').then((res) => res.json())
+  //   // const quote = res[0]
+  //   // console.log(quote)
+
+  //   return {
+  //     props: {
+  //       today,
+  //       isHoliday,
+  //       holiday,
+  //       // quote,
+  //     },
+  //   }
+  // }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -55,58 +163,10 @@ export default function Home({
       </Head>
 
       <main className={styles.main}>
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
-          Hari ini
-          {/* check isHoliday */}
-          {isHoliday ? (
-            <span className="ml-3 text-red-500">libur</span>
-          ) : (
-            <span className="ml-3 text-blue-500">kerja</span>
-          )}
-          !
-        </h1>
-
-        {isHoliday ? (
-          <Image
-            src="/cat-sleep.gif"
-            alt="holiday"
-            className="w-80 inline-block"
-            width={500}
-            height={500}
-          />
-        ) : (
-          <Image
-            src="/cat-work.gif"
-            alt="work"
-            className="w-38 inline-block"
-            width={500}
-            height={500}
-          />
-        )}
-
-        <p className={styles.description}>
-          {/* show date today with javascript behavior */}
-          <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
-            {holiday ? <strong>Selamat {holiday.name} </strong> : ''}
-            {holiday ? <br /> : ''}
-
-            {/* get date locale indonesia */}
-            {dateToday.toLocaleDateString('id-ID', {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </span>
-        </p>
+        <Greet />
 
         {/* <p className={styles.description}>Punya rencana apa hari ini?</p> */}
-        {/* show quote with blockquote */}
-        <blockquote className="text-center">
-          <p className="text-2xl font-semibold">&quot;{quote.q}&quot;</p>
-        </blockquote>
-        {/* print html special character */}
-        <p className="text-center text-gray-500">{quote.a}</p>
+        <Quote />
         {/*
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -166,88 +226,87 @@ export default function Home({
   )
 }
 
-export async function getStaticProps() {
-  const year = new Date().getFullYear()
-  const holidays = getByYear(year)
+// export async function getStaticProps() {
+//   const year = new Date().getFullYear()
+//   const holidays = getByYear(year)
 
-  // get time utc
-  // const today = new Date()
-  // console.log(today)
-  // today.setHours(today.getHours() + 7)
-  // let now = new Date()
-  // const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
-  // get date todayUtc on indonesia
-  // todayUtc.setHours(todayUtc.getHours() + 7)
-  // const today = new Date(todayUtc)
-  // console.log(todayUtc)
-  // fetch time from api https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta
-  const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then(
-    (res) => res.json()
-  )
-  // console.log(time)
-  const today = new Date(time.currentLocalTime)
-  // console.log(today)
-  // const today = new Date(todayUtc.getTime() + 7 * 3600 * 1000)
+//   // get time utc
+//   // const today = new Date()
+//   // console.log(today)
+//   // today.setHours(today.getHours() + 7)
+//   // let now = new Date()
+//   // const todayUtc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
+//   // get date todayUtc on indonesia
+//   // todayUtc.setHours(todayUtc.getHours() + 7)
+//   // const today = new Date(todayUtc)
+//   // console.log(todayUtc)
+//   // fetch time from api https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta
+//   const time = await fetch('https://www.timeapi.io/api/TimeZone/zone?timeZone=Asia/Jakarta').then(
+//     (res) => res.json()
+//   )
+//   // console.log(time)
+//   const today = new Date(time.currentLocalTime)
+//   // console.log(today)
+//   // const today = new Date(todayUtc.getTime() + 7 * 3600 * 1000)
 
-  const isHoliday = holidays.some((holiday: { date: Date }) => {
-    const date = new Date(holiday.date)
-    // console.log(date)
-    // console.log(today.getDay(), today.getDate(), today.getMonth(), date.getDate(), date.getMonth())
-    // check if today is not monday and not saturday
-    return (
-      (date.getDate() === today.getDate() && date.getMonth() === today.getMonth()) ||
-      today.getDay() === 1 ||
-      today.getDay() === 6
-    )
-  })
+//   const isHoliday = holidays.some((holiday: { date: Date }) => {
+//     const date = new Date(holiday.date)
+//     // console.log(date.getDate() === today.getDate() && date.getMonth() === today.getMonth())
+//     // console.log(today.getDay(), today.getDate(), today.getMonth(), date.getDate(), date.getMonth())
+//     // check if today is not monday and not saturday
+//     return (
+//       date.getDate() === today.getDate() && date.getMonth() === today.getMonth()
+//     )
+//   })
+//   // console.log(isHoliday)
 
-  // get data from holiday json
-  const data = holidays.map((holiday: { date: Date }) => {
-    const date = new Date(holiday.date)
-    // console.log(today.getDay())
+//   // get data from holiday json
+//   const data = holidays.map((holiday: { date: Date }) => {
+//     const date = new Date(holiday.date)
+//     // console.log(today.getDay())
 
-    if (today.getDay() === 0 || (today.getDay() === 6 && isHoliday)) {
-      // find holiday name where today is holiday
-      const todayHoliday = holidays.find((holiday: { date: Date }) => {
-        const date = new Date(holiday.date)
-        return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
-      })
-      return {
-        name: 'Libur Akhir Pekan dan ' + todayHoliday?.name,
-        isHoliday: true,
-      }
-    } else if (today.getDay() === 0 || (today.getDay() === 6 && !isHoliday)) {
-      return {
-        name: 'Libur Akhir Pekan',
-        isHoliday: true,
-      }
-    } else {
-      // if today is holiday, return object where isHoliday is true
-      return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
-        ? { ...holiday, isHoliday: true }
-        : { ...holiday, isHoliday: false }
-    }
-  })
-  // console.log(data)
+//     if (today.getDay() === 0 || (today.getDay() === 6 && isHoliday)) {
+//       // find holiday name where today is holiday
+//       const todayHoliday = holidays.find((holiday: { date: Date }) => {
+//         const date = new Date(holiday.date)
+//         return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
+//       })
+//       return {
+//         name: 'Libur Akhir Pekan dan ' + todayHoliday?.name,
+//         isHoliday: true,
+//       }
+//     } else if (today.getDay() === 0 || (today.getDay() === 6 && !isHoliday)) {
+//       return {
+//         name: 'Libur Akhir Pekan',
+//         isHoliday: true,
+//       }
+//     } else {
+//       // if today is holiday, return object where isHoliday is true
+//       return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
+//         ? { ...holiday, isHoliday: true }
+//         : { ...holiday, isHoliday: false }
+//     }
+//   })
+//   console.log(data)
 
-  // get object where isHoliday is true
-  const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
+//   // get object where isHoliday is true
+//   const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? null
 
-  // fetch qoutes of the day
-  const res = await fetch('https://zenquotes.io/api/today').then((res) => res.json())
-  const quote = res[0]
-  // console.log(quote)
+//   // fetch qoutes of the day
+//   const res = await fetch('https://zenquotes.io/api/today').then((res) => res.json())
+//   const quote = res[0]
+//   // console.log(quote)
 
-  return {
-    props: {
-      today: today.toDateString(),
-      isHoliday,
-      holiday,
-      quote,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10, // In seconds
-  }
-}
+//   return {
+//     props: {
+//       today: today.toDateString(),
+//       isHoliday,
+//       holiday,
+//       quote,
+//     },
+//     // Next.js will attempt to re-generate the page:
+//     // - When a request comes in
+//     // - At most once every 10 seconds
+//     revalidate: 10, // In seconds
+//   }
+// }
