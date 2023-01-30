@@ -38,7 +38,7 @@ export default function Greet() {
       return today.getDate() === date.getDate() && today.getMonth() === date.getMonth()
     })
     // get data from holiday json
-    const holiday = holidays.map((holiday) => {
+    let holiday = holidays.map((holiday) => {
       const date = new Date(holiday.date)
       // console.log(today.getDay())
 
@@ -61,15 +61,30 @@ export default function Greet() {
           : { ...holiday, isHoliday: false }
       }
     })
-    setHoliday(holiday)
     // console.log(holiday, 'holiday')
 
-    // get object where isHoliday is true
-    // const holiday = data.find((holiday: { isHoliday: boolean }) => holiday.isHoliday) ?? {
-    //   name: 'Hari Biasa',
-    //   isHoliday: false,
-    //   date: today,
-    // }
+    // check if today is holiday
+    const isTodayHoliday = holiday.some((holiday) => {
+      return holiday.isHoliday
+    })
+    // console.log(isTodayHoliday, 'isTodayHoliday')
+
+    if (isTodayHoliday) {
+      holiday = holiday.filter((holiday) => {
+        return holiday.isHoliday
+      })
+    } else {
+      // get object where isHoliday is true
+      holiday = [
+        {
+          name: 'Bekerja 💪',
+          isHoliday: false,
+        },
+      ]
+    }
+
+    setHoliday(holiday)
+    // console.log(holiday, 'holiday')
 
     setLoading(false)
     return {
@@ -91,47 +106,47 @@ export default function Greet() {
           <span>Loading...</span>
         </div>
       ) : (
-          <div className='flex flex-col justify-center items-center'>
-            <h1 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
-              Hari ini
-              {/* check isHoliday */}
-              {isHoliday ? (
-                <span className="ml-3 text-red-500">libur</span>
-              ) : (
-                <span className="ml-3 text-blue-500">kerja</span>
-              )}
-              !
-            </h1>
-
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3">
+            Hari ini
+            {/* check isHoliday */}
             {isHoliday ? (
+              <span className="ml-3 text-red-500">libur</span>
+            ) : (
+              <span className="ml-3 text-blue-500">kerja</span>
+            )}
+            !
+          </h1>
+
+          {isHoliday ? (
             <Image
               src="/cat-sleep.gif"
-                alt="holiday"
-                className="w-80 inline-block"
-                width={500}
-                height={500}
-              />
-            ) : (
-              <Image
-                src="/cat-work.gif"
-                alt="work"
-                className="w-38 inline-block"
-                width={500}
-                height={500}
-              />
-            )}
+              alt="holiday"
+              className="w-80 inline-block"
+              width={500}
+              height={500}
+            />
+          ) : (
+            <Image
+              src="/cat-work.gif"
+              alt="work"
+              className="w-38 inline-block"
+              width={500}
+              height={500}
+            />
+          )}
 
-            <div className={styles.description}>
-              {/* show date today with javascript behavior */}
-              <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
-                <strong>Selamat {holiday.length > 0 && holiday[0].name}</strong>
-                <br />
+          <div className={styles.description}>
+            {/* show date today with javascript behavior */}
+            <span className={isHoliday ? 'text-red-500' : 'text-blue-500'}>
+              <strong>Selamat {holiday.length > 0 && holiday[0].name}</strong>
+              <br />
 
-                {/* get date locale indonesia */}
-                <RealTime />
-              </span>
-            </div>
+              {/* get date locale indonesia */}
+              <RealTime />
+            </span>
           </div>
+        </div>
       )}
     </div>
   )
