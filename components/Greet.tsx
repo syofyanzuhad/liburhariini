@@ -44,7 +44,7 @@ export default function Greet() {
 
       // console.log(todayHoliday, 'todayHoliday')
       // console.log(todayHoliday !== undefined, 'todayHoliday')
-      if ((todayHoliday !== undefined && today.getDay() === 0) || today.getDay() === 6) {
+      if (todayHoliday !== undefined && (today.getDay() === 0 || today.getDay() === 6)) {
         return {
           name: 'Libur Akhir Pekan dan ' + todayHoliday?.name,
           isHoliday: true,
