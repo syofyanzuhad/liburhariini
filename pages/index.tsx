@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import Greet from '@/components/Greet'
+import splitbee from '@splitbee/web'
 
 // const holidays = dataHolidays
 
 export default function Home({quote}: any) {
+  splitbee.init()
   // const [today, setToday] = useState(new Date())
   // const [isHoliday, setIsHoliday] = useState(false)
   // const [holiday, setHoliday] = useState(true)
