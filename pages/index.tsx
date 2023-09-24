@@ -116,7 +116,7 @@ export default function Home({quote}: any) {
     <div className={styles.container}>
       <Head>
         <title>Libur Hari Ini</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/cat-work.gif" />
         <meta name="description" content="Cek libur hari ini" />
         <meta name="keywords" content="libur hari ini, hari libur, hari libur nasional" />
         <meta name="author" content="Syofyan Zuhad" />
